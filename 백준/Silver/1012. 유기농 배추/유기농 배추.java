@@ -6,7 +6,6 @@ public class Main {
 	static int[][] arr;
 	static int cnt;
 	static int xMax,yMax,n;
-	static boolean[][] visited;
 	static int[] dx = {0,-1,0,1};
 	static int[] dy = {1,0,-1,0};
 	
@@ -29,8 +28,6 @@ public class Main {
 			arr = new int[yMax][xMax];
 			// 지렁이 수
 			cnt = 0;
-			//방문여부
-			visited = new boolean[yMax][xMax];
 			
 			// 지도에 썩은 배추 위치 넣기
 			for (int j = 0; j < n; j++) {
@@ -43,7 +40,7 @@ public class Main {
 			// 배추 순찰
 			for (int y = 0; y < yMax; y++) {
 				for (int x = 0; x < xMax; x++) {
-					if(arr[y][x]==1 && !visited[y][x]) {
+					if(arr[y][x]==1) {
 						dfs(x,y);
 						cnt++;
 					}
@@ -54,12 +51,12 @@ public class Main {
 	}
 	
 	static void dfs(int x, int y) {
-		visited[y][x] = true;
+		arr[y][x] = 0;
 		for(int i=0; i<4 ; i++) {
 			int move_x = x + dx[i];
 			int move_y = y + dy[i];
 			if(move_x >= 0 && move_y >= 0 && move_x < xMax && move_y < yMax) {
-				if (!visited[move_y][move_x] && arr[move_y][move_x] == 1) {
+				if (arr[move_y][move_x] == 1) {
 					dfs(move_x, move_y);
 				}
 			}
