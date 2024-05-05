@@ -12,8 +12,8 @@ public class Main {
 		
 		long result = 0l;
 		
-		int a = Integer.parseInt(st.nextToken());
-		int b = Integer.parseInt(st.nextToken());
+		long a = Long.parseLong(st.nextToken());
+		long b = Long.parseLong(st.nextToken());
 		
 		result = (a+b) * (a-b);
 		
