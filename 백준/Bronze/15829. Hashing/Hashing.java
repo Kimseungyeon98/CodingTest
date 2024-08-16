@@ -17,16 +17,17 @@ public class Main {
 		
 		int n = Integer.parseInt(br.readLine());
 		String str = br.readLine();
-		String[] arr = str.split("");
 		
-		Long result = 0l;
-		int index = 0;
-		
-		for(String s : arr) {
-			int v = (int)s.charAt(0)-96;
-			result += v * (int)Math.pow(31,index++);
-		}
-		
-		System.out.println(result);
+		long result = 0L;
+        long powerOf31 = 1L;
+        final int MOD = 1234567891;
+
+        for (int i = 0; i < n; i++) {
+            int v = (int) str.charAt(i) - 96;
+            result = (result + (v * powerOf31) % MOD) % MOD;
+            powerOf31 = (powerOf31 * 31) % MOD;
+        }
+
+		System.out.println(result%1234567891);
 	}
 }
