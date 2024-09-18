@@ -1,0 +1,5 @@
+SELECT COUNT(*) AS COUNT
+FROM ECOLI_DATA
+WHERE (GENOTYPE & 3 OR GENOTYPE & 4) AND !(GENOTYPE & 2)
+
+-- 2번 형질을 보유하지 않으면서 1번이나 3번 형질을 보유한 개채의 수
