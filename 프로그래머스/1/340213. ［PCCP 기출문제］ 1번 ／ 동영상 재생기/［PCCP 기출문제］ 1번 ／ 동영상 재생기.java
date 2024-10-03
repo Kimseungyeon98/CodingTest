@@ -10,16 +10,10 @@ class Solution {
                     present_time = opening_end;
                 }
             if(commands[i].equals("next")){
-                if(opening_start <= present_time && present_time <= opening_end){
-                    present_time = opening_end;
-                }
                 if(present_time > total_time-10){
                     present_time = total_time;
                 }else {
                     present_time += 10;
-                }
-                if(opening_start <= present_time && present_time <= opening_end){
-                    present_time = opening_end;
                 }
             }else if(commands[i].equals("prev")){
                 if(present_time < 10){
@@ -32,7 +26,6 @@ class Solution {
                     present_time = opening_end;
                 }
         }
-
         return resultTime(present_time);
     }
     public static int translateTime(String time){
