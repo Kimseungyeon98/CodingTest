@@ -9,6 +9,3 @@ FROM ECOLI_DATA a
 ORDER BY rate
     ) b
 ORDER BY ID;
-
-
-
