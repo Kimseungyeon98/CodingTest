@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.*;
 
 public class Main {
@@ -8,22 +10,30 @@ public class Main {
 	public static void main(String[] args) throws IOException{
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		
 		int n = Integer.parseInt(br.readLine());
 		int m = Integer.parseInt(br.readLine());
-		String str = br.readLine();
 		
-		String tmp = "I" + "OI".repeat(n);
+		char[] arr = br.readLine().toCharArray();
 		
-		int answer = 0;
-		
-		for(int i=0; i<m-tmp.length()+1; i++) {
-			int w = tmp.length()+i-1;
-			if(tmp.equals(str.substring(i,w+1))) {
-				answer++;
+		int result = 0;
+		int count = 0;
+		for(int i=1; i<m-1; i++) {
+			if(arr[i-1] == 'I' && arr[i]=='O' && arr[i+1] == 'I') {
+				count++;
+				if(count==n) {
+					count--;
+					result++;
+				}
+				i++;
+			} else {
+				count = 0;
 			}
 		}
 		
-		System.out.println(answer);
+		bw.write((result+"\n"));
+		bw.flush();
+		bw.close();
 	}
 }
